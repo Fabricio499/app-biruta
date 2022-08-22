@@ -1,12 +1,19 @@
-import React from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import React, { useState } from 'react'
+import { Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { RFPercentage } from 'react-native-responsive-fontsize';
 import { UserCard } from '../components/UserCard';
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { OptionsHome } from '../components/OptionsHome';
 import { WantedPlaces } from '../components/WantedPlaces';
+import { CardYesterday } from '../components/CardYesterday';
+import Lottie from 'lottie-react-native';
+import MenPeople from '../assets/animations/men-people.json'
+import { SearchPage } from '../components/SearchPage';
 
 export const Home = () => {
+
+    const [visibleSearch, setVisibleSearch] = useState(false)
+
     return (
         <View style={styles.Container}>
             <View style={styles.Header}>
@@ -22,7 +29,7 @@ export const Home = () => {
                 <Text style={{fontSize: RFPercentage(2.2)}}> 👋</Text>
             </View>
             <View style={styles.OptionsLocale}>
-                <OptionsHome />
+                <OptionsHome Open={()=>setVisibleSearch(true)} />
             </View>
             <View style={styles.MoreOptions}> 
                 <Text style={{color: '#46555c', fontSize: RFPercentage(2.3)}}>
@@ -30,6 +37,29 @@ export const Home = () => {
                 </Text>
                 <WantedPlaces />
             </View>
+            <View style={styles.YesterdayArea}>
+                <CardYesterday />
+            </View>
+            <View style={styles.OptionsApp}>
+                <View style={styles.OptionsLottie}>
+                    <Lottie source={MenPeople} autoPlay loop={false} style={{width: '100%'}} />
+                </View>
+                <View style={styles.OptionsButtons}>
+                    <TouchableOpacity style={styles.ButtomOption}>
+                        <MaterialIcons name='build' size={20} />
+                        <Text>settings</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.ButtomOption}>
+                        <MaterialIcons name='loop' size={20} />
+                        <Text>Reload</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+            <Modal 
+                animationType='slide'
+                transparent={false}
+                visible={visibleSearch}
+            ><SearchPage Exit={()=>setVisibleSearch(false)} /></Modal>
         </View>
     )
 }
@@ -81,5 +111,38 @@ const styles = StyleSheet.create({
         paddingHorizontal: '5%',
         paddingVertical: '2%',
         flexDirection: 'column',
+    },
+    YesterdayArea: {
+        height: '20%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingHorizontal: '5%',
+    },
+    OptionsApp: {
+        height: '29%',
+        flexDirection: 'row'
+    },
+    OptionsLottie: {
+        width: '50%',
+        alignItems: 'flex-end',
+        justifyContent: 'flex-end',
+    },
+    OptionsButtons: {
+        width: '50%',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        paddingRight: '5%',
+    },
+    ButtomOption: {
+        width: '100%',
+        marginTop: '3%',
+        marginBottom: '2%',
+        height: '33%',
+        borderRadius: 20,
+        backgroundColor: '#d8d8d8',
+        flexDirection: 'column',
+        alignItems: 'center',
+        paddingVertical: '5%',
+        justifyContent: 'space-evenly'
     },
 })

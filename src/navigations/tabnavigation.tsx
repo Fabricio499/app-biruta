@@ -1,6 +1,8 @@
+import React from 'react'
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Home } from "../screens/home";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import { MainView } from '../screens/mainview';
 
 const Tab = createBottomTabNavigator();
 
@@ -11,16 +13,25 @@ const TabNavigation = () => {
         screenOptions={{
           tabBarShowLabel: false,
           headerShown: false,
-          tabBarStyle: { backgroundColor: "#F1F7FD" },
-          tabBarInactiveTintColor: "#265399",
-          tabBarActiveTintColor: "#000",
+          tabBarStyle: { backgroundColor: "#F3F3F3" },
+          tabBarInactiveTintColor: "#00ABE8",
+          tabBarActiveTintColor: "#28587B",
         }}>
             <Tab.Screen
-        name="Inicio"
+        name="Home"
         component={Home}
         options={{
-            MaterialIcons: ({ color, size }) => (
-            <Ionicons name="cloud" color={color} size={size} />
+            tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="cloud" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="MainView"
+        component={MainView}
+        options={{
+            tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="location-on" color={color} size={size} />
           ),
         }}
       />
@@ -28,4 +39,4 @@ const TabNavigation = () => {
     )
 }
 
-export default TabNavigator;
+export default TabNavigation;

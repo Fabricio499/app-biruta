@@ -2,11 +2,15 @@ import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import { CardOption } from './CardOption'
 
-export const OptionsHome = () => {
+interface OptionsHomeProps {
+    Open: () => void;
+}
+
+export const OptionsHome = ({Open}: OptionsHomeProps) => {
     return (
         <View style={styles.Container}>
             <CardOption Option={1} />
-            <CardOption Option={2} />
+            <CardOption Option={2} Open={Open} />
         </View>
     )
 }

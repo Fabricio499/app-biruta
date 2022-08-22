@@ -5,11 +5,12 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 interface CardOptionTypes {
     Option: number;
+    Open?: () => void;
 }
 
-export const CardOption = ({Option}: CardOptionTypes) => {
+export const CardOption = ({Option, Open}: CardOptionTypes) => {
     return (
-        <TouchableOpacity style={[styles.Container, styles[Option === 1 ? 'Coloration1' : 'Coloration2']]}>
+        <TouchableOpacity style={[styles.Container, styles[Option === 1 ? 'Coloration1' : 'Coloration2']]} onPress={Open} >
             <View style={styles.Circle(Option)}>
                 <MaterialIcons name={Option === 1 ? 'near-me' : 'search'} size={22} color={Option === 1 ? '#00ABE8' : '#28587B'} />
             </View>
