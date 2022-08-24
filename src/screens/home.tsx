@@ -9,10 +9,12 @@ import { CardYesterday } from '../components/CardYesterday';
 import Lottie from 'lottie-react-native';
 import MenPeople from '../assets/animations/men-people.json'
 import { SearchPage } from '../components/SearchPage';
+import { SettingsModal } from '../components/SettingsModal';
 
 export const Home = () => {
 
     const [visibleSearch, setVisibleSearch] = useState(false)
+    const [visibleSettings, setVisibleSettings] = useState(false)
 
     return (
         <View style={styles.Container}>
@@ -45,7 +47,7 @@ export const Home = () => {
                     <Lottie source={MenPeople} autoPlay loop={false} style={{width: '100%'}} />
                 </View>
                 <View style={styles.OptionsButtons}>
-                    <TouchableOpacity style={styles.ButtomOption}>
+                    <TouchableOpacity style={styles.ButtomOption} onPress={()=>setVisibleSettings(true)}>
                         <MaterialIcons name='build' size={20} />
                         <Text>settings</Text>
                     </TouchableOpacity>
@@ -60,6 +62,12 @@ export const Home = () => {
                 transparent={false}
                 visible={visibleSearch}
             ><SearchPage Exit={()=>setVisibleSearch(false)} /></Modal>
+            <Modal
+                animationType='slide'
+                transparent={true}
+                visible={visibleSettings}
+            >
+            <SettingsModal Exit={()=>setVisibleSettings(false)} /></Modal>
         </View>
     )
 }

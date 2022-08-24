@@ -2,7 +2,8 @@ import React from 'react'
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
 import { RFPercentage } from 'react-native-responsive-fontsize'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
-
+import Lottie from 'lottie-react-native';
+import Map from '../assets/animations/map-search.json'
 interface SearchPage {
     Exit: () => void;
 }
@@ -26,6 +27,9 @@ export const SearchPage = ({Exit}: SearchPage) => {
                 <TouchableOpacity style={styles.ExitButton} onPress={Exit} >
                     <Text style={{color: '#d8d8d8'}}>to back</Text>
                 </TouchableOpacity>
+            </View>
+            <View style={styles.MapSection}>
+                <Lottie source={Map} autoPlay loop />
             </View>
         </View>
     )
@@ -72,7 +76,6 @@ const styles = StyleSheet.create({
         paddingVertical: '5%',
         alignItems: 'center',
         justifyContent: 'space-between',
-        borderWidth: 1,
     },
     ExitButton: {
         width: '30%',
@@ -91,4 +94,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
         paddingVertical: '25%',
     },
+    MapSection: {
+        flex: 1,
+        backgroundColor: '#28587B'
+    }
 })
