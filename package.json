@@ -17,6 +17,7 @@
     "eslint-config-react-native-typescript": "^2.2.6",
     "expo-font": "^10.2.0",
     "expo-modules-core": "^0.11.4",
+    "expo-screen-orientation": "^4.3.0",
     "lottie-react-native": "^5.1.4",
     "react": "18.0.0",
     "react-native": "0.69.4",

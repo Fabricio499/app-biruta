@@ -8,8 +8,11 @@ import React from 'react';
 import { SafeAreaView } from 'react-native';
 import TabNavigation from './src/navigations/tabnavigation';
 import { NavigationContainer } from '@react-navigation/native';
+import * as ScreenOrientation from "expo-screen-orientation";
 
 const App = () => {
+
+  ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#D8D8D8'}}>

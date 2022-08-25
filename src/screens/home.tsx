@@ -63,7 +63,7 @@ export const Home = () => {
                 visible={visibleSearch}
             ><SearchPage Exit={()=>setVisibleSearch(false)} /></Modal>
             <Modal
-                animationType='slide'
+                animationType='fade'
                 transparent={true}
                 visible={visibleSettings}
             >
